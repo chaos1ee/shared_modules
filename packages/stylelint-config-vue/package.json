@@ -1,0 +1,33 @@
+{
+  "name": "@chaos1ee/stylelint-config-vue",
+  "version": "0.0.0",
+  "main": "index.js",
+  "keywords": [
+    "stylelint",
+    "stylelint configurations"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "postcss-html": "^1.2.0",
+    "stylelint-config-html": "^1.0.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-recommended-vue": "^1.0.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-prettier": "^2.0.0"
+  },
+  "peerDependencies": {
+    "prettier": ">=2.4.1",
+    "stylelint": ">=14.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/chaos1ee/shared-modules.git",
+    "directory": "packages/stylelint-config"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "http://registry.npmjs.org/"
+  },
+  "gitHead": "60cddb5917264b50a3ec35e9a40f5e8de39a5cdd"
+}
