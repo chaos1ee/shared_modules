@@ -1,6 +1,6 @@
 {
   "name": "@chaos1ee/stylelint-config-vue",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "keywords": [
     "stylelint",
