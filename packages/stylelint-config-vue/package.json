@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com/chaos1ee/shared-modules.git",
+    "url": "ssh://git@github.com/chaos1ee/shared_modules.git",
     "directory": "packages/stylelint-config"
   },
   "publishConfig": {

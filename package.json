@@ -1,5 +1,5 @@
 {
-  "name": "shared-modules",
+  "name": "shared_modules",
   "private": true,
   "workspaces": [
     "packages/*"
@@ -16,7 +16,7 @@
   },
   "description": "Some configurations.",
   "main": "index.js",
-  "repository": "git@github.com:chaos1ee/shared-modules.git",
+  "repository": "git@github.com:chaos1ee/shared_modules.git",
   "author": "chaos1ee <hao.li@funplus.com>",
   "license": "MIT"
 }
