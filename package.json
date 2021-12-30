@@ -1,0 +1,22 @@
+{
+  "name": "shared-modules",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "publish": "npx lerna publish --no-push",
+    "publish:package": "npx lerna publish from-package --no-push",
+    "publish:git": "npx lerna publish from-git --no-push"
+  },
+  "devDependencies": {
+    "eslint": "^8.2.0",
+    "lerna": "^4.0.0",
+    "prettier": "^2.4.1"
+  },
+  "description": "Some configurations.",
+  "main": "index.js",
+  "repository": "git@github.com:chaos1ee/shared-modules.git",
+  "author": "chaos1ee <hao.li@funplus.com>",
+  "license": "MIT"
+}

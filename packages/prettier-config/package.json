@@ -1,0 +1,25 @@
+{
+  "name": "@chaos1ee/prettier-config",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "prettier",
+    "prettier configurations"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "prettier": ">=2.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/chaos1ee/shared-modules.git",
+    "directory": "packages/prettier-config"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}
