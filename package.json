@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "publish": "npx lerna publish --no-push",
+    "publish:lerna": "npx lerna publish --no-push",
     "publish:package": "npx lerna publish from-package --no-push",
     "publish:git": "npx lerna publish from-git --no-push"
   },
