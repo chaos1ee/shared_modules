@@ -1,6 +1,71 @@
 module.exports = {
   extends: [require.resolve('./base')],
   plugins: ['import', 'jsx-a11y', 'react-hooks'],
+  overrides: [
+    {
+      files: ['**/*.ts?(x)'],
+      parserOptions: {
+        parser: require.resolve('@typescript-eslint/parser'),
+        ecmaVersion: 2018,
+        sourceType: 'module',
+        ecmcFeatures: {
+          jsx: true,
+        },
+      },
+      plugins: ['@typescript-eslint'],
+      rules: {
+        'default-case': 'off',
+        'no-dupe-class-members': 'off',
+        'no-undef': 'off',
+        '@typescript-eslint/consistent-type-imports': 'warn',
+        '@typescript-eslint/no-namespace': 'error',
+        'no-unused-vars': 'off',
+        '@typescript-eslint/no-unused-vars': [
+          'warn',
+          {
+            args: 'none',
+            ignoreRestSiblings: true,
+          },
+        ],
+        'no-useless-constructor': 'off',
+        '@typescript-eslint/no-useless-constructor': ['error'],
+        '@typescript-eslint/consistent-type-assertions': 'warn',
+        'no-array-constructor': 'off',
+        '@typescript-eslint/no-array-constructor': ['error'],
+        'no-use-before-define': 'off',
+        '@typescript-eslint/no-use-before-define': [
+          'error',
+          {
+            functions: false,
+            classes: false,
+            variables: false,
+            typedefs: false,
+          },
+        ],
+        'no-unused-expressions': 'off',
+        '@typescript-eslint/no-unused-expressions': [
+          'error',
+          {
+            allowTernary: true,
+            allowShortCircuit: true,
+          },
+        ],
+        'no-redeclare': 'off',
+        '@typescript-eslint/no-redeclare': ['error'],
+        'no-shadow': 'off',
+        '@typescript-eslint/no-shadow': [
+          'error',
+          {
+            builtinGlobals: true,
+            hoist: 'never',
+            ignoreTypeValueShadow: true,
+            ignoreFunctionTypeParameterNameValueShadow: true,
+            allow: [],
+          },
+        ],
+      },
+    },
+  ],
   rules: {
     // http://eslint.org/docs/rules/
     'array-callback-return': 'warn',
@@ -196,67 +261,4 @@ module.exports = {
     'react/jsx-no-duplicate-props': 'error',
     'react/jsx-closing-bracket-location': 'warn',
   },
-  overrides: [
-    {
-      files: ['**/*.ts?(x)'],
-      parserOptions: {
-        parser: require.resolve('@typescript-eslint/parser'),
-        ecmaVersion: 2018,
-        sourceType: 'module',
-        ecmcFeatures: {
-          jsx: true,
-        },
-      },
-      plugins: ['@typescript-eslint'],
-      rules: {
-        'default-case': 'off',
-        'no-dupe-class-members': 'off',
-        'no-undef': 'off',
-        '@typescript-eslint/consistent-type-imports': 'warn',
-        '@typescript-eslint/no-namespace': 'error',
-        'no-unused-vars': 'off',
-        '@typescript-eslint/no-unused-vars': [
-          'warn',
-          {
-            args: 'none',
-            ignoreRestSiblings: true,
-          },
-        ],
-        'no-useless-constructor': 'off',
-        '@typescript-eslint/no-useless-constructor': ['error'],
-        '@typescript-eslint/consistent-type-assertions': 'warn',
-        'no-array-constructor': 'off',
-        '@typescript-eslint/no-array-constructor': ['error'],
-        'no-use-before-define': 'off',
-        '@typescript-eslint/no-use-before-define': [
-          'error',
-          {
-            functions: false,
-            classes: false,
-            variables: false,
-            typedefs: false,
-          },
-        ],
-        'no-unused-expressions': 'off',
-        '@typescript-eslint/no-unused-expressions': [
-          'error',
-          {
-            allowTernary: true,
-            allowShortCircuit: true,
-          },
-        ],
-        'no-redeclare': 'off',
-        '@typescript-eslint/no-redeclare': ['error'],
-        'no-shadow': 'off',
-        '@typescript-eslint/no-shadow': [
-          'warn',
-          {
-            builtinGlobals: true,
-            hoist: 'functions',
-            allow: ['resolve', 'reject', 'done'],
-          },
-        ],
-      },
-    },
-  ],
 }
