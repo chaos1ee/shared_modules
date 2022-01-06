@@ -1,0 +1,43 @@
+{
+  "name": "@chaos1ee/eslint-config-react",
+  "version": "0.0.0",
+  "description": "Eslint configuraions for React project.",
+  "keywords": [
+    "React",
+    "EsLint configs"
+  ],
+  "author": "hao.li <hao.li@funplus.com>",
+  "homepage": "https://github.com/chaos1ee/shared_modules#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "files": [
+    "base.js",
+    "index.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chaos1ee/shared_modules.git",
+    "directory": "packages/eslint-config-react"
+  },
+  "bugs": {
+    "url": "https://github.com/chaos1ee/shared_modules/issues"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/eslint-parser": "^7.16.5",
+    "@typescript-eslint/eslint-plugin": "^5.9.0",
+    "@typescript-eslint/parser": "^5.9.0",
+    "babel-preset-react-app": "^10.0.1",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0"
+  },
+  "peerDependencies": {
+    "eslint": "^8.6.0"
+  }
+}
