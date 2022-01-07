@@ -17,13 +17,14 @@ module.exports = {
         'default-case': 'off',
         'no-dupe-class-members': 'off',
         'no-undef': 'off',
-        '@typescript-eslint/consistent-type-imports': 'warn',
+        '@typescript-eslint/consistent-type-imports': 'error',
         '@typescript-eslint/no-namespace': 'error',
         'no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': [
-          'warn',
+          'error',
           {
             args: 'none',
+            argsIgnorePattern: '^_',
             ignoreRestSiblings: true,
           },
         ],
@@ -173,6 +174,7 @@ module.exports = {
     // https://github.com/benmosher/eslint-plugin-import/tree/master/docs/rules
     'import/first': 'error',
     'import/no-amd': 'error',
+    'import/no-unresolved': 'error',
     'import/no-anonymous-default-export': 'warn',
     'import/no-webpack-loader-syntax': 'error',
     'import/prefer-default-export': 'off',
