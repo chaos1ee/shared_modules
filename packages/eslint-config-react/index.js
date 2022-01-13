@@ -20,14 +20,7 @@ module.exports = {
         '@typescript-eslint/consistent-type-imports': 'error',
         '@typescript-eslint/no-namespace': 'error',
         'no-unused-vars': 'off',
-        '@typescript-eslint/no-unused-vars': [
-          'error',
-          {
-            args: 'none',
-            argsIgnorePattern: '^_',
-            ignoreRestSiblings: true,
-          },
-        ],
+        '@typescript-eslint/no-unused-vars': ['off'],
         'no-useless-constructor': 'off',
         '@typescript-eslint/no-useless-constructor': ['error'],
         '@typescript-eslint/consistent-type-assertions': 'warn',
@@ -57,7 +50,7 @@ module.exports = {
         '@typescript-eslint/no-shadow': [
           'error',
           {
-            builtinGlobals: true,
+            builtinGlobals: false,
             hoist: 'never',
             ignoreTypeValueShadow: true,
             ignoreFunctionTypeParameterNameValueShadow: true,
