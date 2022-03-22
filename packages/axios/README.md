@@ -14,6 +14,7 @@ interface ResponseType {
 ```typescript
 axios.get<unknown, ResponseType>('/something')
 ```
+
 **After**
 
 ```typescript

@@ -1,22 +1,17 @@
-# `eslint-config-react`
-
-> TODO: description
-
+# @chaos1ee/prettier-config
 
 ## Install
 
 ```shell
-yarn add @chaos/eslint-config-react -D
+yarn add eslint @chaos1ee/eslint-config-react -D
 ```
 
 ## Usage
 
-.eslintrc.js
+.prettierrc.js
 
 ```javascript
-module.export = {
-  extends: [require('@chaos1ee/react')],
+module.exports = {
+    extends: ['@chaos1ee/react'],
 }
-
-// TODO: DEMONSTRATE API
 ```
