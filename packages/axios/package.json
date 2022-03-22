@@ -8,6 +8,7 @@
   "author": "hao.li <hao.li@funplus.com>",
   "homepage": "https://github.com/chaos1ee/shared_modules#readme",
   "license": "MIT",
+  "main": "./index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/chaos1ee/shared_modules.git"
