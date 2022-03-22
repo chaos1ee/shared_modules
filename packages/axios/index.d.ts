@@ -1,4 +1,5 @@
 import type { AxiosRequestConfig } from 'axios'
+import axios from 'axios'
 
 declare module 'axios' {
   export interface AxiosInstance {
@@ -11,3 +12,6 @@ declare module 'axios' {
     patch<T = unknown>(url: string, data?: unknown, config?: AxiosRequestConfig): Promise<T>
   }
 }
+
+export * as axios from 'axios'
+export default axios
