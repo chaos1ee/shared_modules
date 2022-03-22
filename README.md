@@ -1,18 +1,18 @@
 # Config Modules
 
-A monorepo for publishing NPM packages。
+A monorepo for NPM packages publishing.
 
 ## Add
 
 ### Usage
 
-```shell
+```
 lerna add <package>[@version] [--dev] [--exact] [--peer]
 ```
 
 ### Examples
 
-```shell
+```
 # Adds the module-1 package to the packages in the 'prefix-' prefixed folders
 lerna add module-1 packages/prefix-*
 
@@ -32,7 +32,24 @@ lerna add module-1
 lerna add babel-core
 ```
 
-## Install
+## Create
+
+```
+lerna create <name> [loc]
+
+Create a new lerna-managed package
+
+Positionals:
+name  The package name (including scope), which must be locally unique _and_
+publicly available                                   [string] [required]
+loc   A custom package location, defaulting to the first configured package
+location                                                        [string]
+```
+
+
+
+
+## Install dependencies
 
 ```shell
 lerna bootstrap

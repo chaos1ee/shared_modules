@@ -1,0 +1,25 @@
+{
+  "name": "@chaos1ee/axios",
+  "version": "0.0.0",
+  "description": "Axios with different response type.",
+  "keywords": [
+    "aixos"
+  ],
+  "author": "hao.li <hao.li@funplus.com>",
+  "homepage": "https://github.com/chaos1ee/shared_modules#readme",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chaos1ee/shared_modules.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chaos1ee/shared_modules/issues"
+  },
+  "dependencies": {
+    "axios": "^0.26.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
