@@ -1,4 +1,2 @@
-import axios from 'axios'
-
-export * as axios from 'axios'
-export default axios
+export * from 'axios'
+export { default } from 'axios'

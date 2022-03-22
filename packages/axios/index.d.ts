@@ -1,5 +1,4 @@
 import type { AxiosRequestConfig } from 'axios'
-import axios from 'axios'
 
 declare module 'axios' {
   export interface AxiosInstance {
@@ -13,5 +12,5 @@ declare module 'axios' {
   }
 }
 
-export * as axios from 'axios'
-export default axios
+export * from 'axios'
+export { default } from 'axios'
