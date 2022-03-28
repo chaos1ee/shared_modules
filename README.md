@@ -1,6 +1,6 @@
 # Config Modules
 
-A monorepo for NPM packages publishing.
+A monorepo for publishing NPM packages.
 
 ## Add
 

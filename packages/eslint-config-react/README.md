@@ -8,7 +8,7 @@ yarn add eslint @chaos1ee/eslint-config-react -D
 
 ## Usage
 
-.prettierrc.js
+.eslintrc.js
 
 ```javascript
 module.exports = {

@@ -1,7 +1,10 @@
 # `@chaos1ee/axios`
 
-> Easy to set the return type of axios requests.
+> Superset of [axios](https://github.com/axios/axios).
 
+## Easier to set the return type of axios requests
+
+Example:
 
 ```typescript
 interface ResponseType {
@@ -9,28 +12,28 @@ interface ResponseType {
 }
 ```
 
-**Before**
+Before
 
 ```typescript
 axios.get<unknown, ResponseType>('/something')
 ```
 
-**After**
+After
 
 ```typescript
 axios.get<ResponseType>('/something')
 ```
 
-## Usage
+## Install
 
 ```shell
 yarn add @chaos1ee/axios
 ```
 
-then:
+## Usage
 
 ```typescript
 import axios from '@chaos1ee/axios'
 
-axios.get('/something')
+axios.get<ResponseType>('/something')
 ```
