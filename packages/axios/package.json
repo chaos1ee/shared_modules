@@ -3,7 +3,8 @@
   "version": "1.0.3",
   "description": "Axios with different response type.",
   "keywords": [
-    "aixos"
+    "axios",
+    "typescript"
   ],
   "author": "hao.li <hao.li@funplus.com>",
   "homepage": "https://github.com/chaos1ee/shared_modules#readme",
