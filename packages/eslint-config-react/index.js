@@ -257,7 +257,8 @@ module.exports = {
     'react/function-component-definition': [
       2,
       {
-        namedComponents: 'function-declaration',
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function',
       },
     ],
   },
