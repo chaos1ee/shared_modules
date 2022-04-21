@@ -1,6 +1,6 @@
 {
   "name": "@chaos1ee/eslint-config-react",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Eslint configurations for React project.",
   "keywords": [
     "React",
