@@ -239,7 +239,6 @@ module.exports = {
     'react/no-is-mounted': 'error',
     'react/button-has-type': 'warn',
     // 'react/hook-use-state': 'error',
-    'react/function-component-definition': 'error',
     'react/no-access-state-in-setstate': 'error',
     'react/no-unused-state': 'warn',
     'react/no-this-in-sfc': 'warn',
@@ -255,5 +254,11 @@ module.exports = {
     'react/jsx-no-script-url': 'error',
     'react/jsx-no-duplicate-props': 'error',
     'react/jsx-closing-bracket-location': 'warn',
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: 'function-declaration',
+      },
+    ],
   },
 }
