@@ -47,7 +47,11 @@ location                                                        [string]
 ```
 
 
+## Build
 
+```angular2html
+lerna run build
+```
 
 ## Install dependencies
 

@@ -1,6 +1,7 @@
 {
   "name": "shared_modules",
   "private": true,
+  "workspaces": ["packages/**"],
   "scripts": {
     "publish:lerna": "npx lerna publish --no-push",
     "publish:package": "npx lerna publish from-package --no-push",
@@ -15,6 +16,5 @@
   "main": "index.js",
   "repository": "git@github.com:chaos1ee/shared_modules.git",
   "author": "chaos1ee <hao.li@funplus.com>",
-  "license": "MIT",
-  "dependencies": {}
+  "license": "MIT"
 }
