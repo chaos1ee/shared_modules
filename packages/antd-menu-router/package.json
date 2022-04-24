@@ -9,7 +9,7 @@
   "files": [
     "lib"
   ],
-  "module": "lib/index.js",
+  "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "author": "hao.li <hao.li@funplus.com>",
   "homepage": "https://github.com/chaos1ee/shared_modules#readme",
