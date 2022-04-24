@@ -1,3 +1,4 @@
+import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { Menu } from 'antd';
 import { isEmpty } from 'lodash-es';
 import { useState } from 'react';
@@ -16,32 +17,21 @@ function flattenConfig(items, flattened, openKeys = []) {
 }
 function NavItems({ data }) {
     if (isEmpty(data)) {
-        return <></>;
+        return _jsx(_Fragment, {});
     }
-    return (<>
-      {data.map(item => {
+    return (_jsx(_Fragment, { children: data.map(item => {
             if (item.hidden) {
                 return null;
             }
             if (isEmpty(item.children)) {
-                return (<Menu.Item key={item.key} icon={item.icon}>
-              {item.path && <Link to={item.path}>{item.title}</Link>}
-            </Menu.Item>);
+                return (_jsx(Menu.Item, Object.assign({ icon: item.icon }, { children: item.path && _jsx(Link, Object.assign({ to: item.path }, { children: item.title })) }), item.key));
             }
-            return (<SubMenu title={item.title} key={item.key} icon={item.icon}>
-            {item.children && NavItems({ data: item.children })}
-          </SubMenu>);
-        })}
-    </>);
+            return (_jsx(SubMenu, Object.assign({ title: item.title, icon: item.icon }, { children: item.children && NavItems({ data: item.children }) }), item.key));
+        }) }));
 }
 const NoMatch = () => {
     const location = useLocation();
-    return (<div>
-      <h3>
-        <span>No match for </span>
-        <code>{location.pathname}</code>
-      </h3>
-    </div>);
+    return (_jsx("div", { children: _jsxs("h3", { children: [_jsx("span", { children: "No match for " }), _jsx("code", { children: location.pathname })] }) }));
 };
 export default function generateRoute(config) {
     const flattenedConfig = flattenConfig(config, []);
@@ -57,9 +47,7 @@ export default function generateRoute(config) {
         const currentRouteConfig = useActivatedRouteConfig();
         const [openKeys] = useState((_a = currentRouteConfig === null || currentRouteConfig === void 0 ? void 0 : currentRouteConfig.ancestorKeys) !== null && _a !== void 0 ? _a : []);
         const [selectedKeys] = useState([(_b = currentRouteConfig === null || currentRouteConfig === void 0 ? void 0 : currentRouteConfig.key) !== null && _b !== void 0 ? _b : '1']);
-        return (<Menu theme="dark" mode="inline" defaultOpenKeys={openKeys} defaultSelectedKeys={selectedKeys}>
-        {NavItems({ data: config })}
-      </Menu>);
+        return (_jsx(Menu, Object.assign({ theme: "dark", mode: "inline", defaultOpenKeys: openKeys, defaultSelectedKeys: selectedKeys }, { children: NavItems({ data: config }) })));
     }
     function Routes() {
         return useRoutes(isEmpty(flattenedConfig)
@@ -67,12 +55,12 @@ export default function generateRoute(config) {
             : [
                 {
                     path: '/',
-                    element: <Navigate replace to={{ pathname: flattenedConfig[0].path }}/>,
+                    element: _jsx(Navigate, { replace: true, to: { pathname: flattenedConfig[0].path } }),
                 },
                 ...config,
                 {
                     path: '*',
-                    element: <NoMatch />,
+                    element: _jsx(NoMatch, {}),
                 },
             ]);
     }
