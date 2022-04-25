@@ -1,6 +1,6 @@
 {
   "name": "antd-menu-router",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "Generate Antd menu and React Router components.",
   "keywords": [
     "antd",
