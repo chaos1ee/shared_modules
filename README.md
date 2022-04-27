@@ -2,6 +2,12 @@
 
 A monorepo for publishing NPM packages.
 
+## TODO
+
+- [ ] 在 GitHub Action 中添加流水线
+- [ ] 使用 rollup 打包
+
+
 ## Add
 
 ### Usage
