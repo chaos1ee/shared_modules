@@ -2,7 +2,8 @@ import { Menu as AntdMenu } from 'antd'
 import { ItemType } from 'antd/lib/menu/hooks/useItems'
 import { MenuDividerType, MenuItemGroupType, SubMenuType } from 'rc-menu/lib/interface'
 import { FunctionComponent, useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { MenuInfo } from 'rc-menu/es/interface'
 
 export type MenuItem = Omit<Exclude<NonNullable<ItemType>, MenuItemGroupType | MenuDividerType>, 'children'> &
   (
@@ -16,10 +17,10 @@ export type MenuItem = Omit<Exclude<NonNullable<ItemType>, MenuItemGroupType | M
       }
   )
 
-function flattenMenuItems(items: MenuItem[], flattenedItems: MenuItem[] = []) {
+function flattenItems(items: MenuItem[], flattenedItems: MenuItem[] = []) {
   for (const item of items) {
     if ((item as SubMenuType).children) {
-      flattenMenuItems((item as SubMenuType).children as MenuItem[], flattenedItems)
+      flattenItems((item as SubMenuType).children as MenuItem[], flattenedItems)
     } else {
       flattenedItems.push(item)
     }
@@ -46,44 +47,26 @@ const Menu: FunctionComponent<MenuProps> = props => {
   const [selectedKeys, setSelectedKeys] = useState<string[]>()
   const [flattenedItems, setFlattenedItems] = useState<MenuItem[]>([])
   const activatedItem = useActivatedMenu(flattenedItems)
+  const navigate = useNavigate()
 
   useEffect(() => {
-    setFlattenedItems(flattenMenuItems(items))
+    setFlattenedItems(flattenItems(items))
   }, [items])
 
   useEffect(() => {
     setSelectedKeys(activatedItem?.key ? [activatedItem.key + ''] : [])
   }, [activatedItem?.key])
 
-  function renderItems(items: MenuItem[]) {
-    return (
-      <>
-        {items.map(item => {
-          if (!item.children?.length) {
-            return (
-              <AntdMenu.Item key={item.key} icon={item.icon}>
-                <Link to={item.path || ''}>
-                  {item.label} - {item.path}
-                </Link>
-              </AntdMenu.Item>
-            )
-          }
+  const onClick = ({ key }: MenuInfo) => {
+    const item = flattenedItems.find(item => key === item.key)
 
-          return (
-            <AntdMenu.SubMenu title={item.label} key={item.key} icon={item.icon}>
-              {item.children && renderItems(item.children)}
-            </AntdMenu.SubMenu>
-          )
-        })}
-      </>
-    )
+    if (item && item.path) {
+      navigate(item.path)
+      setSelectedKeys([key])
+    }
   }
 
-  return (
-    <AntdMenu selectedKeys={selectedKeys} theme="dark">
-      {renderItems(items)}
-    </AntdMenu>
-  )
+  return <AntdMenu selectedKeys={selectedKeys} items={items} theme="dark" onClick={onClick} />
 }
 
 Menu.defaultProps = {
