@@ -7,7 +7,6 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 export type MenuItem = Omit<Exclude<NonNullable<ItemType>, MenuItemGroupType | MenuDividerType>, 'children' | 'key'> & {
   key: string
-  keys: string[] // 所有祖先节点的 key 组成的数组，由浅入深排列。
 } & (
     | {
         path: string
@@ -19,7 +18,13 @@ export type MenuItem = Omit<Exclude<NonNullable<ItemType>, MenuItemGroupType | M
       }
   )
 
-function flattenItems(items: MenuItem[], flattenedItems: MenuItem[] = [], keys: string[] = []) {
+type WithKeys<T> = T & { keys: string[] }
+
+function flattenItems(
+  items: MenuItem[],
+  flattenedItems: WithKeys<MenuItem>[] = [],
+  keys: string[] = [] /** 所有祖先节点的 key 组成的数组，由浅入深排列。**/,
+): WithKeys<MenuItem>[] {
   for (const item of items) {
     if ((item as SubMenuType).children) {
       flattenItems((item as SubMenuType).children as MenuItem[], flattenedItems, [...keys, item.key])
@@ -27,10 +32,11 @@ function flattenItems(items: MenuItem[], flattenedItems: MenuItem[] = [], keys: 
       flattenedItems.push(Object.assign(item, { keys: keys }))
     }
   }
+
   return flattenedItems
 }
 
-function useActivatedMenu(flattenedItems: MenuItem[]) {
+function useActivatedMenu(flattenedItems: WithKeys<MenuItem>[]) {
   const location = useLocation()
 
   if (location.pathname) {
