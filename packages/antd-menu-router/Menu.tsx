@@ -1,7 +1,7 @@
 import { Menu as AntdMenu } from 'antd'
 import { ItemType } from 'antd/lib/menu/hooks/useItems'
 import { MenuInfo } from 'rc-menu/es/interface'
-import { MenuDividerType, MenuItemGroupType, SubMenuType } from 'rc-menu/lib/interface'
+import { MenuDividerType, MenuItemGroupType } from 'rc-menu/lib/interface'
 import { FunctionComponent } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
@@ -22,21 +22,22 @@ type WithKeys<T> = T & { keys: string[] }
 
 function flattenItems(
   items: MenuItem[],
-  flattenedItems: WithKeys<MenuItem>[] = [],
+  flattenedItems: WithKeys<Omit<MenuItem, 'children'>>[] = [],
   keys: string[] = [] /** 所有祖先节点的 key 组成的数组，由浅入深排列。**/,
-): WithKeys<MenuItem>[] {
+): WithKeys<Omit<MenuItem, 'children'>>[] {
   for (const item of items) {
-    if ((item as SubMenuType).children) {
-      flattenItems((item as SubMenuType).children as MenuItem[], flattenedItems, [...keys, item.key])
+    if (item.children) {
+      flattenItems(item.children as MenuItem[], flattenedItems, [...keys, item.key])
     } else {
-      flattenedItems.push(Object.assign(item, { keys: keys }))
+      const { children, ...restProps } = item
+      flattenedItems.push(Object.assign({}, restProps, { keys: keys }))
     }
   }
 
   return flattenedItems
 }
 
-function useActivatedMenu(flattenedItems: WithKeys<MenuItem>[]) {
+function useActivatedMenu(flattenedItems: WithKeys<Omit<MenuItem, 'children'>>[]) {
   const location = useLocation()
 
   if (location.pathname) {
