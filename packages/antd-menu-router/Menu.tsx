@@ -2,9 +2,9 @@ import { Menu as AntdMenu } from 'antd'
 import { ItemType } from 'antd/lib/menu/hooks/useItems'
 import { MenuInfo } from 'rc-menu/es/interface'
 import { MenuDividerType, MenuItemGroupType } from 'rc-menu/lib/interface'
-import { FunctionComponent, useMemo } from 'react'
+import { FunctionComponent, useEffect, useMemo, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import type { MenuProps as AntdMenuProps } from 'antd/lib/menu'
+import { MenuProps as AntdMenuProps } from 'antd/lib/menu'
 
 export type MenuItem = Omit<Exclude<NonNullable<ItemType>, MenuItemGroupType | MenuDividerType>, 'children' | 'key'> & {
   key: string
@@ -39,15 +39,15 @@ function flattenItems(
 }
 
 function useActivatedMenu(flattenedItems: WithKeys<Omit<MenuItem, 'children'>>[]) {
-  const location = useLocation()
+  const { pathname } = useLocation()
 
   return useMemo(() => {
-    if (location.pathname) {
-      return flattenedItems.find(item => typeof item.path === 'string' && location.pathname === item.path) || null
+    if (pathname) {
+      return flattenedItems.find(item => typeof item.path === 'string' && pathname === item.path) || null
     }
 
     return null
-  }, [location])
+  }, [pathname])
 }
 
 export interface MenuProps extends AntdMenuProps {
@@ -59,9 +59,14 @@ const Menu: FunctionComponent<MenuProps> = props => {
   const navigate = useNavigate()
   const flattenedItems = flattenItems(items)
   const activatedItem = useActivatedMenu(flattenedItems)
-  const defaultItem = activatedItem || null
-  const defaultSelectedKeys = defaultItem ? [defaultItem.key] : []
-  const defaultOpenKeys = defaultItem ? defaultItem.keys : []
+  const [openKeys, setOpenKeys] = useState<string[]>([])
+  const [selectedKeys, setSelectedKeys] = useState<string[]>([])
+
+  useEffect(() => {
+    const item = activatedItem || null
+    setOpenKeys(item ? item.keys : [])
+    setSelectedKeys(item ? [item.key] : [])
+  }, [activatedItem])
 
   const onClick = (info: MenuInfo) => {
     const item = flattenedItems.find(menuItem => info.key === menuItem.key)
@@ -73,8 +78,10 @@ const Menu: FunctionComponent<MenuProps> = props => {
 
   return (
     <AntdMenu
-      defaultOpenKeys={defaultOpenKeys}
-      defaultSelectedKeys={defaultSelectedKeys}
+      openKeys={openKeys}
+      selectedKeys={selectedKeys}
+      defaultOpenKeys={openKeys}
+      defaultSelectedKeys={selectedKeys}
       items={items}
       theme="dark"
       mode="inline"
