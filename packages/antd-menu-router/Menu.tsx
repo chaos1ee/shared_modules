@@ -55,7 +55,7 @@ export interface MenuProps extends AntdMenuProps {
 }
 
 const Menu: FunctionComponent<MenuProps> = props => {
-  const { items } = props
+  const { items, ...restProps } = props
   const navigate = useNavigate()
   const flattenedItems = flattenItems(items)
   const activatedItem = useActivatedMenu(flattenedItems)
@@ -78,6 +78,7 @@ const Menu: FunctionComponent<MenuProps> = props => {
       items={items}
       theme="dark"
       mode="inline"
+      {...restProps}
       onClick={onClick}
     />
   )
