@@ -2,8 +2,9 @@ import { Menu as AntdMenu } from 'antd'
 import { ItemType } from 'antd/lib/menu/hooks/useItems'
 import { MenuInfo } from 'rc-menu/es/interface'
 import { MenuDividerType, MenuItemGroupType } from 'rc-menu/lib/interface'
-import { FunctionComponent } from 'react'
+import { FunctionComponent, useMemo } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
+import type { MenuProps as AntdMenuProps } from 'antd/lib/menu'
 
 export type MenuItem = Omit<Exclude<NonNullable<ItemType>, MenuItemGroupType | MenuDividerType>, 'children' | 'key'> & {
   key: string
@@ -40,14 +41,16 @@ function flattenItems(
 function useActivatedMenu(flattenedItems: WithKeys<Omit<MenuItem, 'children'>>[]) {
   const location = useLocation()
 
-  if (location.pathname) {
-    return flattenedItems.find(item => location.pathname === item.path + '') || null
-  }
+  return useMemo(() => {
+    if (location.pathname) {
+      return flattenedItems.find(item => typeof item.path === 'string' && location.pathname === item.path) || null
+    }
 
-  return null
+    return null
+  }, [location])
 }
 
-export interface MenuProps {
+export interface MenuProps extends AntdMenuProps {
   items: MenuItem[]
 }
 
@@ -56,7 +59,7 @@ const Menu: FunctionComponent<MenuProps> = props => {
   const navigate = useNavigate()
   const flattenedItems = flattenItems(items)
   const activatedItem = useActivatedMenu(flattenedItems)
-  const defaultItem = activatedItem || flattenedItems[0] || null
+  const defaultItem = activatedItem || null
   const defaultSelectedKeys = defaultItem ? [defaultItem.key] : []
   const defaultOpenKeys = defaultItem ? defaultItem.keys : []
 
