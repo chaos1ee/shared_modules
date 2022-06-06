@@ -58,8 +58,8 @@ const Menu: FunctionComponent<MenuProps> = props => {
   const { items, ...restProps } = props
   const [openKeys, setOpenKeys] = useState<string[]>([])
   const [selectedKeys, setSelectedKeys] = useState<string[]>([])
-  const navigate = useNavigate()
   const activatedItem = useActivatedMenuItem(items)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const item = activatedItem || null
@@ -74,10 +74,10 @@ const Menu: FunctionComponent<MenuProps> = props => {
       const item = flattenItems(items).find(menuItem => info.key === menuItem.key)
 
       if (item && item.path) {
-        navigate(item.path)
+        navigate(item.path, { replace: true })
       }
     },
-    [items],
+    [items, navigate],
   )
 
   const onSubMenuClick = (keys: string[]) => {
