@@ -38,16 +38,16 @@ function flattenItems(
   return flattenedItems
 }
 
-function useActivatedMenu(items: WithKeys<Omit<MenuItem, 'children'>>[]) {
+function useActivatedMenu(flattenedItems: WithKeys<Omit<MenuItem, 'children'>>[]) {
   const { pathname } = useLocation()
 
   return useMemo(() => {
     if (pathname) {
-      return items.find(item => typeof item.path === 'string' && pathname === item.path) || null
+      return flattenedItems.find(item => typeof item.path === 'string' && pathname === item.path) || null
     }
 
     return null
-  }, [items, pathname])
+  }, [flattenedItems, pathname])
 }
 
 export interface MenuProps extends AntdMenuProps {
