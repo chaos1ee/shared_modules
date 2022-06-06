@@ -1,10 +1,10 @@
 import { Menu as AntdMenu } from 'antd'
+import { MenuProps as AntdMenuProps } from 'antd/lib/menu'
 import { ItemType } from 'antd/lib/menu/hooks/useItems'
 import { MenuInfo } from 'rc-menu/es/interface'
 import { MenuDividerType, MenuItemGroupType } from 'rc-menu/lib/interface'
 import { FunctionComponent, useEffect, useMemo, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { MenuProps as AntdMenuProps } from 'antd/lib/menu'
 
 export type MenuItem = Omit<Exclude<NonNullable<ItemType>, MenuItemGroupType | MenuDividerType>, 'children' | 'key'> & {
   key: string
@@ -38,16 +38,16 @@ function flattenItems(
   return flattenedItems
 }
 
-function useActivatedMenu(flattenedItems: WithKeys<Omit<MenuItem, 'children'>>[]) {
+function useActivatedMenu(items: WithKeys<Omit<MenuItem, 'children'>>[]) {
   const { pathname } = useLocation()
 
   return useMemo(() => {
     if (pathname) {
-      return flattenedItems.find(item => typeof item.path === 'string' && pathname === item.path) || null
+      return items.find(item => typeof item.path === 'string' && pathname === item.path) || null
     }
 
     return null
-  }, [pathname])
+  }, [items, pathname])
 }
 
 export interface MenuProps extends AntdMenuProps {
@@ -57,10 +57,14 @@ export interface MenuProps extends AntdMenuProps {
 const Menu: FunctionComponent<MenuProps> = props => {
   const { items, ...restProps } = props
   const navigate = useNavigate()
-  const flattenedItems = flattenItems(items)
-  const activatedItem = useActivatedMenu(flattenedItems)
+  const [flattenedItems, setFlattenedItems] = useState<WithKeys<Omit<MenuItem, 'children'>>[]>([])
   const [openKeys, setOpenKeys] = useState<string[]>([])
   const [selectedKeys, setSelectedKeys] = useState<string[]>([])
+  const activatedItem = useActivatedMenu(flattenedItems)
+
+  useEffect(() => {
+    setFlattenedItems(flattenItems(items))
+  }, [items])
 
   useEffect(() => {
     const item = activatedItem || null
