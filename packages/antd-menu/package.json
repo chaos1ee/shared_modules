@@ -1,8 +1,11 @@
 {
   "name": "antd-menu",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Antd menu component.",
-  "keywords": ["antd", "menu"],
+  "keywords": [
+    "antd",
+    "menu"
+  ],
   "files": [
     "lib",
     "style.css"
