@@ -4,7 +4,8 @@ import { ItemType } from 'antd/lib/menu/hooks/useItems'
 import { MenuInfo } from 'rc-menu/es/interface'
 import { MenuDividerType, MenuItemGroupType } from 'rc-menu/lib/interface'
 import { FunctionComponent, useCallback, useEffect, useMemo, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
+import { NavigateFunction } from 'react-router/lib/hooks'
 
 export type MenuItem = Omit<Exclude<NonNullable<ItemType>, MenuItemGroupType | MenuDividerType>, 'children' | 'key'> & {
   key: string
@@ -52,14 +53,14 @@ function useActivatedMenuItem(items: MenuItem[]) {
 
 export interface MenuProps extends AntdMenuProps {
   items: MenuItem[]
+  navigate?: NavigateFunction
 }
 
 const Menu: FunctionComponent<MenuProps> = props => {
-  const { items, ...restProps } = props
+  const { items, navigate, ...restProps } = props
   const [openKeys, setOpenKeys] = useState<string[]>([])
   const [selectedKeys, setSelectedKeys] = useState<string[]>([])
   const activatedItem = useActivatedMenuItem(items)
-  const navigate = useNavigate()
 
   useEffect(() => {
     const item = activatedItem || null
@@ -74,7 +75,7 @@ const Menu: FunctionComponent<MenuProps> = props => {
       const item = flattenItems(items).find(menuItem => info.key === menuItem.key)
 
       if (item && item.path) {
-        navigate(item.path, { replace: true })
+        navigate?.(item.path, { replace: true })
       }
     },
     [items, navigate],
