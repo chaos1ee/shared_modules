@@ -69,13 +69,13 @@ const Menu: FunctionComponent<MenuProps> = props => {
 
   const onClick = useCallback(
     (info: MenuInfo) => {
-      setSelectedKeys([info.key])
-
       const item = flattenItems(items).find(menuItem => info.key === menuItem.key)
 
       if (item && item.path) {
         navigate(item.path, { replace: true })
       }
+
+      setSelectedKeys([info.key])
     },
     [items],
   )
