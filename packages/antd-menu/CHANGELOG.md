@@ -1,5 +1,11 @@
 # antd-menu
 
+## 2.0.0
+
+### Major Changes
+
+- [#12](https://github.com/chaos1ee/shared_modules/pull/12) [`edc19863`](https://github.com/chaos1ee/shared_modules/commit/edc198633bda7c0ab99d31be13fffaaefc09095a) Thanks [@chaos1ee](https://github.com/chaos1ee)! - build antd-menu
+
 ## 1.2.0
 
 ### Minor Changes
