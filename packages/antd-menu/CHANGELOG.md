@@ -1,5 +1,11 @@
 # antd-menu
 
+## 2.1.0
+
+### Minor Changes
+
+- [#14](https://github.com/chaos1ee/shared_modules/pull/14) [`1054e1ab`](https://github.com/chaos1ee/shared_modules/commit/1054e1abf4f2bb870339c6bdf872064631031945) Thanks [@chaos1ee](https://github.com/chaos1ee)! - change package.json files
+
 ## 2.0.0
 
 ### Major Changes
