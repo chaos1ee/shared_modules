@@ -17,8 +17,8 @@
     "stylelint-prettier": "^2.0.0"
   },
   "peerDependencies": {
-    "prettier": ">=2.4.1",
-    "stylelint": ">=14.1.0"
+    "prettier": "^2.4.1",
+    "stylelint": "^14.9.1"
   },
   "repository": {
     "type": "git",
@@ -29,5 +29,9 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "gitHead": "60cddb5917264b50a3ec35e9a40f5e8de39a5cdd"
+  "gitHead": "60cddb5917264b50a3ec35e9a40f5e8de39a5cdd",
+  "devDependencies": {
+    "prettier": "^2.4.1",
+    "stylelint": "^14.9.1"
+  }
 }
