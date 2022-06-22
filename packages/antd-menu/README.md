@@ -1,37 +1,36 @@
-# antd-menu-router
+# antd-menu
 
-## Install
+扩展 antd Menu 组件的功能，支持 React Router 导航功能，以及自动从当前地址计算激活的导航。
+
+## 安装
 
 ```shell
-yarn add antd-menu
+pnpm add antd-menu
 ```
 
-## Usage
+## 使用
 
 ```typescript jsx
-import , { RouteConfig } from 'antd-menu'
+import Menu, { MenuItem } from 'antd-menu'
 
-const config: RouteConfig[] = [
+const config: MenuItem[] = [
     {
-        key: 'mail',
-        title: '邮件',
-        path: '/mail',
-        icon: <MailOutlined />,
-        element: <Mail />,
+        key: 'user',
+        path: '/user',
+        label: '用户',
+        icon: <UserOutlined />,
     },
+    {
+        key: 'group',
+        path: '/group',
+        label: '组',
+        icon: <TeamOutlined />,
+    }
 ]
-
-const { Navs, Routes } = generateRoute(config)
-
 
 function App() {
     <div >
-        <div className="nav">
-            <Navs />
-        </div>
-        <div className="content">
-            <Routes /> 
-        </div>
+        <Menu items={menuItems} />
     </div>
 }
 
