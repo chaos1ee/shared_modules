@@ -1,4 +1,4 @@
 .npmrc
 node_modules
 *.log
-**/lib/
+dist
