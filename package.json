@@ -6,8 +6,7 @@
   "scripts": {
     "build": "pnpm --filter antd-menu build",
     "ci:version": "changeset version",
-    "prerelease": "pnpm run build",
-    "release": "changeset publish"
+    "release": "pnpm run build & changeset publish"
   },
   "devDependencies": {
     "@changesets/changelog-github": "^0.4.5",
