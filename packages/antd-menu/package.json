@@ -7,12 +7,12 @@
     "menu"
   ],
   "files": [
-    "lib",
+    "dist",
     "style.css"
   ],
-  "main": "lib/index.js",
-  "module": "lib/index.js",
-  "typings": "lib/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "author": "hao.li <hao.li@funplus.com>",
   "homepage": "https://github.com/chaos1ee/shared_modules#readme",
   "license": "MIT",
