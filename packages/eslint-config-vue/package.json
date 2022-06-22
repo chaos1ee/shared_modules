@@ -17,8 +17,8 @@
     "eslint-plugin-vue": "^8.1.1"
   },
   "peerDependencies": {
-    "eslint": ">=8.2.0",
-    "typescript": "^4.5.4"
+    "eslint": "^8.2.0",
+    "typescript": "^4.6.3"
   },
   "repository": {
     "type": "git",
@@ -29,5 +29,9 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "gitHead": "60cddb5917264b50a3ec35e9a40f5e8de39a5cdd"
+  "gitHead": "60cddb5917264b50a3ec35e9a40f5e8de39a5cdd",
+  "devDependencies": {
+    "eslint": "^8.2.0",
+    "typescript": "^4.6.3"
+  }
 }
